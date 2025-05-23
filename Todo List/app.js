@@ -18,22 +18,24 @@ function renderTodos() {
     // 리스트 안에 삭제버튼 이벤트 생성
     document.querySelectorAll(".deleteBtn").forEach((btn) => {
         btn.addEventListener("click", () => {
-            const i = btn.dataset.index;
+            const i = btn.dataset.index; // dataset -> html 에 data- 로 전언된 부분 접근할때 사용
             todos.splice(i, 1); // splice (인덱스, 제거수, 등록할 내용[복수개 선언 가능])
             renderTodos(); // 렌더링
         });
     });
 }
 
+// 리스트 생성 버튼 이벤트
 addBtn.addEventListener("click", () => {
     const todo = input.value.trim();
     if (todo) {
-        todos.push(todo);
-        input.value = "";
-        renderTodos();
+        todos.push(todo); // 배열에 값 넣기
+        input.value = ""; // 입력창 초기화
+        renderTodos(); // 랜더링
     }
 })
 
+// 입력창에서 엔터 누를시 버튼 이벤트 실행
 input.addEventListener("keypress", (e) => {
     if (e.key === "Enter") {
         addBtn.click();
